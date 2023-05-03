@@ -4,13 +4,17 @@ function Addpost() {
     return (
         <div className='body'>
             <nav>
-                <ul>
+                <ul id='list1'>
                     <li>Read</li>
                     <li>Write</li>
                     <li>Edit</li>
                 </ul>
+                <ul id='list2'>
+                    <li id='sign-in'>Sign up</li>
+                    <li>Login</li>
+                </ul>
             </nav>
-            <div className="input-box">
+            <form className="input-box">
                 <div className='input-container'>
                     <input className='first-input' placeholder='Title'/>
                     <label></label>
@@ -19,7 +23,7 @@ function Addpost() {
                     <input className='second-input'/>
                     <label></label>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }

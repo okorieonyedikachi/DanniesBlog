@@ -18,21 +18,28 @@ nav {
     height: 30px;
     font-size: 20px;
     background-color: rgba(147, 135, 135, 0.154);
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 ul {
     list-style: none;
     display: flex;
-    /* background-color: red; */
-    justify-content: flex-end;
-    
+    align-self: center;
+    justify-content: center;
 }
 
-li {
-    padding-left: 5em;
-    padding-right: 30px;
+#list1 > li {
+    padding-left: 2rem;
 }
+
+#list2 > li {
+    padding-right: 2rem;
+}
+
+
 
 .input-box {
     width: 90%;
@@ -48,8 +55,6 @@ li {
    justify-content: center;
    margin-top: 10px;
 }
-
-
 
 input{
     width: 100%;
