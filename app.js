@@ -3,7 +3,9 @@ const express = require("express");
 const PORT = 3000;
 
 const app = express();
-app.use(bodyParser.urlencoded({extended:true}));
+// app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(express.static('public'))
 
 app.get( "/", (req, res) => {
     res.sendFile(__dirname + "/homepage.html")
