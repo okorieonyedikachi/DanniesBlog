@@ -18,7 +18,14 @@ app.get("/signUp", (req, res) => {
 
 app.post ("/signUp", (req, res) => {
     res.redirect("/signUp") 
+    const firstName = req.body.fName
+    const lastName = req.body.lName
+    const email = req.body.email
+
+    console.log(firstName, lastName, email)
+    
 })
 
 
 app.listen(PORT,() => {"Server is running on port 3000"})
+

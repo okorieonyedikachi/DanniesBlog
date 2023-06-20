@@ -124,11 +124,20 @@ h1, h2, h3, h4, h5, h6 {
     height: 100px;
     bottom: 0;
     background-color: rgba(66, 63, 63, 0.1);
-   
 }
 
 .footer-container {
     background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     gap: 30px;
+}
+
+.icon-container {
+    background-color: aqua;
+   
+
 }
 
 .icon-img {
