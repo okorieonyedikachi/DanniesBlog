@@ -161,11 +161,16 @@ h1, h2, h3, h4, h5, h6 {
     gap: 20px;
     /* background-color: cadetblue; */
 }
+
 .icon-container {
     /* background-color: aqua; */
     font-size: 12px;
 }
 
+.icon-link {
+    color: black;
+    text-decoration: none;
+}
 .icon-img {
     /* background-color: #6528e0; */
     width: 20px;
