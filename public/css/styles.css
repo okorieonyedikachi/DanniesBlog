@@ -121,27 +121,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer {
-    height: 100px;
-    bottom: 0;
     background-color: rgba(66, 63, 63, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
 }
 
 .footer-container {
-    background-color: red;
+    /* background-color: red; */
     display: flex;
+    width: 85%;
     align-items: center;
-    justify-content: center;
-     gap: 30px;
+    justify-content: space-between;
+    gap: 30px;
 }
 
-.icon-container {
-    background-color: aqua;
-   
 
+.bitmoji {
+    width: 100px;
+    /* height: 100%; */
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    /* background-color: bisque; */
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    gap: 5px;
+   
+}
+
+.icons-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    /* background-color: cadetblue; */
+}
+.icon-container {
+    /* background-color: aqua; */
+    font-size: 12px;
 }
 
 .icon-img {
-    background-color: #6528e0;
+    /* background-color: #6528e0; */
     width: 20px;
     height: 20px;
 }
