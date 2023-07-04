@@ -8,17 +8,20 @@ const { initializeApp, applicationDefault, cert } = require('firebase-admin/app'
 const { getFirestore} = require('firebase-admin/firestore');
 
 const serviceAccount = require("./dannies-newsletter-firebase-adminsdk-2bfzr-3dc1eca0b8.json");
+const { dirname } = require("path");
 
 
 // Initialization of Cloud firestore(firebase)
 initializeApp({
-    credential:cert(serviceAccount)
+    credential:cert(serviceAccount),
+    ignoreUndefinedProperties: true
   });
   
 
 const db = getFirestore();
-const usersCollection = db.collection('users')
+const usersCollection = db.collection('users');
 const newUserRef = usersCollection.doc();
+// db.settings({ ignoreUndefinedProperties: true });
 
 
 const app = express();
@@ -30,8 +33,15 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/homepage.html")
 })
 
+// app.get("/editor", (req, res) => {
+//     res.sendFile(__dirname + "/public/editor.html")
+// })
+// app.post("editor",(req, res) => {
+//     res.sendFile("/editor")
+// })
+
 app.get("/signUp", (req, res) => {
-    res.sendFile(__dirname + "/public/signup.html")
+    res.sendFile(__dirname + "/signup.html")
 })
 
 app.post ("/signUp", (req, res) => {
