@@ -1,48 +1,34 @@
-const blogTitleField = document.querySelector('.title');
-const articleFeild = document.querySelector('.article');
+// Import the functions you need from the SDKs you need
 
-// banner
-const bannerImage = document.querySelector('#banner-upload');
-const banner = document.querySelector(".banner");
-let bannerPath;
+const { initializeApp} = require('firebase-admin/app');
+const { getDatabase} = require('firebase/database');
 
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBZhz4m8nw-35c0YkCiGoKdRJo14TA3Tzk",
+  authDomain: "dannies-newsletter.firebaseapp.com",
+  databaseURL: "https://dannies-newsletter-default-rtdb.firebaseio.com",
+  projectId: "dannies-newsletter",
+  storageBucket: "dannies-newsletter.appspot.com",
+  messagingSenderId: "189740482664",
+  appId: "1:189740482664:web:3cfcd7c4113646bd753bdd",
+
+  databaseURL: "https://dannies-newsletter-default-rtdb.firebaseio.com/"
+
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+const database = getDatabase(app);
+
+const titleField = document.querySelector(".title");
+const articleField = document.querySelector(".article");
 const publishBtn = document.querySelector('.publish-btn');
-const uploadInput = document.querySelector('#image-upload');
-
-bannerImage.addEventListener('change', () => {
-    uploadImage(bannerImage, "banner");
-})
-
-uploadInput.addEventListener('change', () => {
-    uploadImage(uploadInput, "image");
-})
 
 
-// publish button
-document.getElementById('publish-btn').addEventListener('click', () => {
-    let title = document.getElementsByClassName('title')[0].value;
-    let article = document.getElementsByClassName('article')[0].value;
-
-
-    let form = document.createElement('form');
-    form.setAttribute('method', 'POST');
-    form.setAttribute('action', './editor')
-
-    let titleField = document.createElement('input');
-    titleField.setAttribute('type', 'hidden');
-    titleField.setAttribute('name', 'title');
-    titleField.value = title;
-
-    let articleField = document.createElement('input');
-    articleField.setAttribute('type', 'hidden');
-    articleField.setAttribute('name', 'article');
-    articleField.value = article;
-
-    form.appendChild(titleField);
-    form.appendChild(articleField);
-
-    document.body.appendChild(form)
-    form.submit();
-
-    console.log(titleField, articleField)
-})
+console.log('dog')
