@@ -31,6 +31,7 @@ app.use(express.static('public'))
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/homepage.html")
+   
 })
 
 // app.get("/editor", (req, res) => {
@@ -40,12 +41,13 @@ app.get("/", (req, res) => {
 //     res.sendFile("/editor")
 // })
 
-app.get("/signUp", (req, res) => {
-    res.sendFile(__dirname + "/signup.html")
+app.get("/signup", (req, res) => {
+    res.sendFile(__dirname + "/public/signup.html")
+    
 })
 
-app.post ("/signUp", (req, res) => {
-    res.redirect("/signUp") 
+app.post ("/signup", (req, res) => {
+    res.redirect("/signup") 
     
     const firstName = req.body.fName
     const lastName = req.body.lName
