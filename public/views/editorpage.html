@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./editor.css">
+    <link rel="stylesheet" type="text/css" href="css/editor.css">
 </head>
 <body>
     <div class="banner">
         <input type="file" accept="image/*" id="banner-upload" hidden>
         <label for="banner-upload" class="banner-upload-btn"><img src="../images/iconupload.png" alt="upload banner"></label>
     </div>
-    <form class="blog">
+    <form class="blog" action="/editor" method="post">
         <textarea class="title" placeholder="Blog title..." type="text"></textarea>
         <textarea class="article" placeholder="Start writing here..." type="text"></textarea>
         <button class="btn dark publish-btn" id="publish-btn">Save</button>
