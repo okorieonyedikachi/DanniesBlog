@@ -11,15 +11,15 @@
         <input type="file" accept="image/*" id="banner-upload" hidden>
         <label for="banner-upload" class="banner-upload-btn"><img src="../images/iconupload.png" alt="upload banner"></label>
     </div>
-    <div class="blog">
-        <textarea type="text" class="title" placeholder="Blog title..."></textarea>
-        <textarea type="text" class="article" placeholder="Start writing here..."></textarea>
-    </div>
-    <div class="blog-options">
-        <button class="btn dark publish-btn" id="publish-btn">Publish</button>
+    <form class="blog">
+        <textarea class="title" placeholder="Blog title..." type="text"></textarea>
+        <textarea class="article" placeholder="Start writing here..." type="text"></textarea>
+        <button class="btn dark publish-btn" id="publish-btn">Save</button>
+    </form>
+    <!-- <form class="blog-options">
         <input type="file" accept="image/*" id="image-upload" hidden>
         <label for="image-upload" class="btn grey upload-btn">Upload Image</label>
-    </div>
+    </form> -->
     <script src="../js/editor.js"></script>
 </body>
 </html>
