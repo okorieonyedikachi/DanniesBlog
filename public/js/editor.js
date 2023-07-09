@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 
 const { initializeApp } = require("firebase-admin/app");
 const { getDatabase } = require("firebase/database");
@@ -76,3 +75,6 @@ document.getElementById('publish-btn').addEventListener("click", () => {
       });
   }
 });
+
+
+
