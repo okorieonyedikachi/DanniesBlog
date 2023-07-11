@@ -1,18 +1,17 @@
-const bodyParser = require("body-parser");
-const express = require("express");
-const https = require("https")
-
+const {https} = 'https'
 const PORT = 3000;
+import bodyParser from 'body-parser';
+import fs from 'fs';
+import express from 'express';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import { initializeApp, applicationDefault, cert } from 'firebase-admin/app';
+import { getFirestore} from 'firebase-admin/firestore';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-
-
-const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-const { getFirestore} = require('firebase-admin/firestore');
-
-const serviceAccount = require("./dannies-newsletter-firebase-adminsdk-2bfzr-3dc1eca0b8.json");
-
-
+const serviceAccount = JSON.parse(fs.readFileSync('./dannies-newsletter-firebase-adminsdk-2bfzr-3dc1eca0b8.json', 'utf8'));
 
 // Initialization of Cloud firestore(firebase)
 initializeApp({
@@ -24,7 +23,9 @@ initializeApp({
 const db = getFirestore();
 const usersCollection = db.collection('users');
 const newUserRef = usersCollection.doc();
-// db.settings({ ignoreUndefinedProperties: true });
+const blogCollection = db.collection('Blogs');
+const newBlogRef = blogCollection.doc()
+db.settings({ ignoreUndefinedProperties: true });
 
 
 const app = express();
@@ -36,20 +37,32 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/editor', (req, res) => {
-    res.sendFile(__dirname + '/public/views/editorpage.html');
-  });
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/homepage.html") 
 })
 
+app.get('/editor', (req, res) => {
+    res.sendFile(__dirname + '/public/views/editorpage.html');
+});
+
+app.post ("/", (req, res) => {
+  
+    const titleField = req.body.title;
+    const articleField = req.body.article;
+
+    console.log ("titleField")
+
+    // newBlogRef.add ({
+    //     Title: titleField,
+    //     Article: articleField
+    // })
+
+})
+
 app.get("/signup", (req, res) => {
     res.sendFile(__dirname + "/public/signup.html")  
 })
-
-
-
 
 app.post ("/signup", (req, res) => {
     res.redirect("/signup") 
@@ -58,7 +71,7 @@ app.post ("/signup", (req, res) => {
     const lastName = req.body.lName
     const email = req.body.email
 
-    newUserRef.set({
+    newUserRef.add({
     FirstName: firstName,
     LastName: lastName,
     Email: email
