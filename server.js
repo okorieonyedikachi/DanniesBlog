@@ -51,44 +51,9 @@ app.get("/editor", (req, res) => {
 });
 
 app.post("/editor", (req, res) => {
-  const title = req.body.title;
-  const article = req.body.article;
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  if (article.length && title.length) {
-    // generating id
-    let letters = "abcdefghijklmnopqrstuvwxyz";
-    let blogTitle = title.split(" ").join("-");
-    let id = "";
-    for (let i = 0; i < 4; i++) {
-      id += letters[Math.floor(Math.random() * letters.length)];
-    }
-  
-  // setting up docName
-  let docName = `${blogTitle}-${id}`;
-  let date = new Date();
+  console.log("sent")
+})
 
-  
-
-  blogCollection.doc(docName).set({
-    Title: title,
-    Article: article,
-    publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
-  });
-  }  
-});
 
 app.get("/signup", (req, res) => {
   res.sendFile(__dirname + "/public/signup.html");
