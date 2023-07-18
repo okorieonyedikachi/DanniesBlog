@@ -39,9 +39,12 @@ h1, h2, h3, h4, h5, h6 {
     color: black ;
 }
 
-.bg-body-secondary {
-    background-color: rgba(66, 63, 63, 0.1);
+.blog-container {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 30px;
 }
+
 
 .bd-placeholder-img {
     font-size: 1.125rem;
