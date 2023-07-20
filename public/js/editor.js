@@ -59,7 +59,9 @@ blogForm.addEventListener("submit", () => {
         for(let i = 0; i < 4; i++) {
             id += letters[Math.floor(Math.random() * letters.length)];
         }
+
         // setting up docName
+
         let docName = `${blogTitle}-${id}`;
         let date = new Date();
 
@@ -70,8 +72,7 @@ blogForm.addEventListener("submit", () => {
             PublishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
         })
         .then(() => {
-            console.log("Document written with ID: ", docName.id);
-            // Handle successful write
+          location.href = `/${docName}`
           })
           .catch((error) => {
             console.error("Error adding document: ", error);
