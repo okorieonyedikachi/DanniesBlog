@@ -1,0 +1,62 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h2,h4 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+    line-height: 1.2;
+}
+
+.icon-text {
+    margin-left: 20px;
+}
+
+.body {
+    width: 70%;
+    /* background-color: blue; */
+    margin: auto;
+    margin-top: 30px;
+    height: 100vh;
+}
+
+.bar-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#edit-btn {
+    width: 130px;
+    border: none;
+    border-radius: 20px;
+    background-color: green;
+}
+
+#edit-link {
+    color: white;
+}
+
+a:link {
+   text-decoration: none;
+   color: black;
+}
+
+.nav-bar {
+    margin-top: 20px;
+}
+
+.nav-list {
+    list-style: none;
+    font-weight: 500;
+    display: flex;
+    /* align-items: center; */
+}
+
+.nav-list > li {
+    padding-right: 2rem;
+}
+
+#hr-1 {
+    border: 1px solid #d8dde1;
+    width: 100%;
+}

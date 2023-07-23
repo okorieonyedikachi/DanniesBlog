@@ -67,9 +67,11 @@ blogForm.addEventListener("submit", () => {
 
         db.collection("Blogs").doc(docName)
         .set({
-            Title: title,
-            Article: article,
-            PublishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+            userId: "",
+            title: title,
+            body: article,
+            isPublished: "", 
+            publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
         })
         .then(() => {
           location.href = `/${docName}`
