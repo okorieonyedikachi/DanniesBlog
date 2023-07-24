@@ -55,6 +55,7 @@ app.post("/editor", (req, res) => {
 })
 
 
+
 app.get("/signup", (req, res) => {
   res.sendFile(__dirname + "/public/signup.html");
 });

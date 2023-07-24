@@ -16,6 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -27,7 +28,8 @@ console.log(db);
 
 const titleField = document.querySelector(".title");
 const articleField = document.querySelector(".article");
-const publishBtn = document.querySelector(".publish-btn");
+const publishBtn = document.getElementById("publish-btn");
+const saveBtn = document.getElementById("save-btn");
 const blogForm = document.querySelector(".blog");
 
 let months = [
@@ -48,39 +50,83 @@ let months = [
 const title = titleField.value;
 const article = articleField.value;
 
-blogForm.addEventListener("submit", () => {
-    // console.log(titleField.value, articleField.value);
-//   e.preventDefault();
-    if (article.length && title.length){
-        // generating id
-        let letters = "abcdefghijklmnopqrstuvwxyz"
-        let blogTitle = title.split(" ").join("-");
-        let id = "";
-        for(let i = 0; i < 4; i++) {
-            id += letters[Math.floor(Math.random() * letters.length)];
-        }
+function saveArticle(isPublished) {
+  if (article.length && title.length){
+    // generating id
+    let letters = "abcdefghijklmnopqrstuvwxyz"
+    let blogTitle = title.split(" ").join("-");
+    let id = "";
+    for(let i = 0; i < 4; i++) {
+        id += letters[Math.floor(Math.random() * letters.length)];
+    }
 
-        // setting up docName
+    // setting up docName
 
-        let docName = `${blogTitle}-${id}`;
-        let date = new Date();
+    let docName = `${blogTitle}-${id}`;
+    let date = new Date();
 
-        db.collection("Blogs").doc(docName)
+    db.collection("Blogs").doc("docName")
         .set({
-            userId: "",
+            // userId: "",
             title: title,
             body: article,
-            isPublished: "", 
+            isPublished: isPublished, 
             publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
         })
         .then(() => {
-          location.href = `/${docName}`
+          console.log("Data added successfully:", docName)
           })
           .catch((error) => {
             console.error("Error adding document: ", error);
             // Handle error
           });
-    }
+  } 
+   
+}
+
+publishBtn.addEventListener('click', ()=> {
+  console.log("Publish")
+  saveArticle(true)
+})
+
+saveBtn.addEventListener('click', ()=> {
+  saveArticle(false)
+  console.log("saved")
+})
+
+// blogForm.addEventListener("submit", () => {
+//     // console.log(titleField.value, articleField.value);
+// //   e.preventDefault();
+//     if (article.length && title.length){
+//         // generating id
+//         let letters = "abcdefghijklmnopqrstuvwxyz"
+//         let blogTitle = title.split(" ").join("-");
+//         let id = "";
+//         for(let i = 0; i < 4; i++) {
+//             id += letters[Math.floor(Math.random() * letters.length)];
+//         }
+
+//         // setting up docName
+
+//         let docName = `${blogTitle}-${id}`;
+//         let date = new Date();
+
+//         db.collection("Blogs").doc(docName)
+//         .set({
+//             userId: "",
+//             title: title,
+//             body: article,
+//             isPublished: "", 
+//             publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+//         })
+//         .then(() => {
+//           location.href = `/${docName}`
+//           })
+//           .catch((error) => {
+//             console.error("Error adding document: ", error);
+//             // Handle error
+//           });
+//     }
 //   db.collection("posts")
 //     .add({
 //       title: titleField.value,
@@ -94,4 +140,4 @@ blogForm.addEventListener("submit", () => {
 //       console.error("Error adding document: ", error);
 //       // Handle error
 //     });
-});
+// });
