@@ -54,6 +54,13 @@ app.post("/editor", (req, res) => {
   console.log("sent")
 })
 
+app.get("/dashboard", (req, res) => {
+  res.sendFile(__dirname + "/public/views/dashboard.html")
+})
+
+app.post("/dashboard", (req, res) => {
+  console.log("dashboard")
+})
 
 
 app.get("/signup", (req, res) => {
