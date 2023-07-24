@@ -47,11 +47,14 @@ let months = [
   "Dec",
 ];
 
-const title = titleField.value;
-const article = articleField.value;
+
 
 function saveArticle(isPublished) {
-  if (article.length && title.length){
+
+  const title = titleField.value;
+  const article = articleField.value;
+
+ 
     // generating id
     let letters = "abcdefghijklmnopqrstuvwxyz"
     let blogTitle = title.split(" ").join("-");
@@ -65,7 +68,9 @@ function saveArticle(isPublished) {
     let docName = `${blogTitle}-${id}`;
     let date = new Date();
 
-    db.collection("Blogs").doc("docName")
+    console.log(docName)
+
+    db.collection("Blogs").doc(docName)
         .set({
             // userId: "",
             title: title,
@@ -76,16 +81,16 @@ function saveArticle(isPublished) {
         .then(() => {
           console.log("Data added successfully:", docName)
           })
-          .catch((error) => {
+        .catch((error) => {
             console.error("Error adding document: ", error);
             // Handle error
           });
-  } 
+  
    
 }
 
 publishBtn.addEventListener('click', ()=> {
-  console.log("Publish")
+  // console.log(docName)
   saveArticle(true)
 })
 
@@ -94,50 +99,3 @@ saveBtn.addEventListener('click', ()=> {
   console.log("saved")
 })
 
-// blogForm.addEventListener("submit", () => {
-//     // console.log(titleField.value, articleField.value);
-// //   e.preventDefault();
-//     if (article.length && title.length){
-//         // generating id
-//         let letters = "abcdefghijklmnopqrstuvwxyz"
-//         let blogTitle = title.split(" ").join("-");
-//         let id = "";
-//         for(let i = 0; i < 4; i++) {
-//             id += letters[Math.floor(Math.random() * letters.length)];
-//         }
-
-//         // setting up docName
-
-//         let docName = `${blogTitle}-${id}`;
-//         let date = new Date();
-
-//         db.collection("Blogs").doc(docName)
-//         .set({
-//             userId: "",
-//             title: title,
-//             body: article,
-//             isPublished: "", 
-//             publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
-//         })
-//         .then(() => {
-//           location.href = `/${docName}`
-//           })
-//           .catch((error) => {
-//             console.error("Error adding document: ", error);
-//             // Handle error
-//           });
-//     }
-//   db.collection("posts")
-//     .add({
-//       title: titleField.value,
-//       content: articleField.value,
-//     })
-//     .then((docRef) => {
-//       console.log("Document written with ID: ", docRef.id);
-//       // Handle successful write
-//     })
-//     .catch((error) => {
-//       console.error("Error adding document: ", error);
-//       // Handle error
-//     });
-// });
