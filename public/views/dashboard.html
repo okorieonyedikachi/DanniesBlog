@@ -15,6 +15,8 @@
       href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&amp;display=swap"
       rel="stylesheet"
     />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 </head>
 <body>
     <form method="post" action="/dashboard">
@@ -24,29 +26,34 @@
             <!-- <a class="link-secondary" href="#">Dannie's Blog</a> -->
             <h2 class="icon-text">Dannie's Blog</h2>
           </div>
-          <!-- <div class="col-4 text-center">
-            <a
-              class="blog-header-logo text-body-emphasis text-decoration-none"
-              href="#"
-            ></a>
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center"></div> -->
         </div>
     </header>  
     <div class="body">
         <div class="bar-1">
             <h4>My Stories</h4>
-            <button id="edit-btn"><a href="./editorpage.html" id="edit-link">Write a story </a></button> 
+            <button id="edit-btn"><a href="/editor" id="edit-link" target=”_blank”>Write a story </a></button> 
         </div>
         <nav class="nav-bar">
             <ul class="nav-list">
-                <li><a href="#">Drafts</a></li>
-                <li><a href="#">Published</a></li>
+                <li id="draft-link"><a href="#drafts">Drafts</a></li>
+                <li id="published-links"><a href="#published">Published</a></li>
             </ul>
-        </nav>
+        </nav>        
         <hr id="hr-1">
+        <section id="drafts">
+          <div id="drafts-list">
+            
+           
+          </div>
+        </section>
+        <section id="published">
+          <div id="published-list">
+            
+           
+          </div>
+        </section>
     </div>
     </form>
-    
+  <script src="js/dashboard.js" type="module"></script>  
 </body>
 </html>
