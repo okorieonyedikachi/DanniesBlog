@@ -47,7 +47,7 @@ function displayBlogs(blogs) {
         <h1 class="display-6 fst-italic">${blog.title}</h1>
         <p class="lead my-3">${truncatedContent}</p>
         <p class="lead mb-0">
-            <a href="#" class="text-body-emphasis fw-bold"
+            <a href="article.html?id=${blog.id}" class="text-body-emphasis fw-bold continue-reading"
               >Continue reading...</a
             >
         </p>
