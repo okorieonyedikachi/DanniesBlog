@@ -76,7 +76,8 @@ function saveArticle(isPublished) {
             title: title,
             body: article,
             isPublished: isPublished, 
-            publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+            publishedAt: `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`,
+            // likes : 0
         })
         .then(() => {
           console.log("Data added successfully:", docName)
