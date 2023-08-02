@@ -22,59 +22,94 @@ firebase.initializeApp(firebaseConfig);
 
 
 const db = firebase.firestore();
+const urlParams = new URLSearchParams(window.location.search);
+const articleId = urlParams.get('id');
 
 console.log(db);
 
-const displayArticles = () => {
-  const mainContainer = document.getElementsByClassName("main");
+console.log(articleId)
+// const displayArticles = (blog) => {
+//   const mainContainer = document.getElementsByClassName("main");
+  
+//       mainContainer.innerHTML += `
+//       <div class="col-lg-9 px-0 title">
+//       <h2>${blog.title}</h2>
+//       </div>
+//       <div class="col-lg-9 px-0 article">
+//       <p class="lh-lg fs-5">${blog.body}</p>
+//       </div>
+//       `;
+  
+//   }
 
-  mainContainer.innerHTML = `
-        <div class="col-lg-9 px-0 title">
-        <h2>${articleData.title}</h2>
-        </div>
-        <div class="col-lg-9 px-0 article">
-        <p class="lh-lg fs-5">${articleData.body}</p>
-        </div>
-    `;
-};
+// let docRef = db.collection("Blogs").doc(articleId);
+//  console.log (docRef)
 
+//  docRef.get().then((doc) => {
+//   if (doc.exists) {
+//       console.log("Document data:", doc.data());
+//   } else {
+//       // doc.data() will be undefined in this case
+//       console.log("No such document!");
+//   }
+//  })
+
+
+
+  // displayArticles()
+
+// Function to display the full article content
+
+// const articleData = doc.data();
+
+
+
+// Function to fetch the article from Firestore based on its ID
 function fetchArticle(articleId) {
-    return db.collection('Blogs')
-        .doc()
-        .get()
-        .then(doc => {
-            if(doc.exists) {
-                const articleData = doc.data();
-                displayArticles(articleData);
-            } else {
-                console.log("article not found")
-            }
-        })
-        .catch(error => {
-                     console.error('Error fetching article:', error);
-                   });
+  let docRef = db.collection("Blogs").doc(articleId);
+  console.log (docRef)
+  // db.collection('Blogs')
+    
+    
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        const articleData = doc.data();
+        console.log(articleData)
+        displayArticle(articleData);
+      } else {
+        console.log('Article not found');
+      }
+    })
+    
+    // .catch(error => {
+    //   console.log('Error fetching article:', error);
+    // });
 }
 
-// function fetchArticle(articleId) {
-//     return db.collection('Blogs')
-//       .doc()
-//       .get()
-//       .then(doc => {
-//         if (doc.exists) {
-//           const articleData = doc.data();
-//           displayArticles(articleData);
-//         } else {
-//           console.error('Article not found');
-//         }
-//       })
-//       .catch(error => {
-//         console.error('Error fetching article:', error);
-//       });
-//   }
-  
-  // Get the article ID from the URL query parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const articleId = urlParams.get('id');
-  
-  // Call fetchArticle when the page loads
-  fetchArticle(articleId);
+function displayArticle(articleData) {
+  const mainContainer = document.getElementsByClassName('main');
+  mainContainer.innerHTML = `
+    <div class="col-lg-9 px-0 title">
+      <h2>${articleData.title}</h2>
+    </div>
+    <div class="col-lg-9 px-0 article">
+      <p class="lh-lg fs-5">
+       baisbiaf rfheoi
+      </p>
+    </div>
+    <hr id="hr1" />
+    <hr id="hr2" />
+    <div class="reaction-bar">
+      <!-- ... other reaction buttons ... -->
+      <button class="reaction-btn" data-reaction="love">❤️</button>
+      <span id="love-count">0</span>
+    </div>
+  `;
+}
+
+// Get the article ID from the URL query parameter
+// const urlParams = new URLSearchParams(window.location.search);
+// const articleId = urlParams.get('id');
+
+// Call fetchArticle when the page loads
+fetchArticle(articleId);
