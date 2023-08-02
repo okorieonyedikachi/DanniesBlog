@@ -58,10 +58,9 @@ app.get("/dashboard", (req, res) => {
   res.sendFile(__dirname + "/public/views/dashboard.html")
 })
 
-app.post("/dashboard", (req, res) => {
-  console.log("dashboard")
+app.get("/article", (req, res) => {
+  res.sendFile(__dirname + "/public/views/article.html")
 })
-
 
 app.get("/signup", (req, res) => {
   res.sendFile(__dirname + "/public/signup.html");
