@@ -51,56 +51,60 @@ function displayArticles(articles) {
 }
 
 // Function to fetch published articles from Firestore
-document.getElementById("published-links").addEventListener("click", fetchPublishedArticles)
+document
+  .getElementById("published-links")
+  .addEventListener("click", fetchPublishedArticles);
 function fetchPublishedArticles() {
-    return db.collection('Blogs')
-      .where('isPublished', '==', true)
-      .get()
-      .then(querySnapshot => {
-        const articles = [];
-        querySnapshot.forEach(doc => {
-          articles.push({
-            id: doc.id,
-            ...doc.data()
-          });
+  return db
+    .collection("Blogs")
+    .where("isPublished", "==", true)
+    .get()
+    .then((querySnapshot) => {
+      const articles = [];
+      querySnapshot.forEach((doc) => {
+        articles.push({
+          id: doc.id,
+          ...doc.data(),
         });
-        return articles;
       });
-  }
-  
-  // Function to fetch draft articles from Firestore
-  function fetchDraftArticles() {
-    return db.collection('Blogs')
-      .where('isPublished', '==', false)
-      .get()
-      .then(querySnapshot => {
-        const articles = [];
-        querySnapshot.forEach(doc => {
-          articles.push({
-            id: doc.id,
-            ...doc.data()
-          });
+      return articles;
+    });
+}
+
+// Function to fetch draft articles from Firestore
+function fetchDraftArticles() {
+  return db
+    .collection("Blogs")
+    .where("isPublished", "==", false)
+    .get()
+    .then((querySnapshot) => {
+      const articles = [];
+      querySnapshot.forEach((doc) => {
+        articles.push({
+          id: doc.id,
+          ...doc.data(),
         });
-        return articles;
       });
-  }
-  
-  // Function to fetch and display articles
-  function fetchAndDisplayArticles() {
-    Promise.all([fetchPublishedArticles(), fetchDraftArticles()])
-      .then(([publishedArticles, draftArticles]) => {
-        const articles = publishedArticles.concat(draftArticles);
-        displayArticles(articles);
-      })
-      .catch(error => {
-        console.error('Error fetching and displaying articles:', error);
-      });
-  }
-  
-  // Call fetchAndDisplayArticles when the page loads
-  fetchAndDisplayArticles();
+      return articles;
+    });
+}
+
+// Function to fetch and display articles
+function fetchAndDisplayArticles() {
+  Promise.all([fetchPublishedArticles(), fetchDraftArticles()])
+    .then(([publishedArticles, draftArticles]) => {
+      const articles = publishedArticles.concat(draftArticles);
+      displayArticles(articles);
+    })
+    .catch((error) => {
+      console.error("Error fetching and displaying articles:", error);
+    });
+}
+
+// Call fetchAndDisplayArticles when the page loads
+fetchAndDisplayArticles();
 // function fetchArticles() {
-   
+
 //   db.collection("Blogs")
 //     // .where("isPublished", "==", true)
 //     .get()
