@@ -62,20 +62,28 @@ function fetchPublishedArticles() {
     .then((querySnapshot) => {
       const articles = [];
       querySnapshot.forEach((doc) => {
-        articles.push({
+        const data = doc.data();
+        console.log("Article data:", data);
+        if(data.isPublished === true){
+          articles.push({
           id: doc.id,
           ...doc.data(),
         });
+        }
+        
       });
       return articles;
     });
 }
 
 // Function to fetch draft articles from Firestore
+document
+  .getElementById("draft-link")
+  .addEventListener("click", fetchDraftArticles);
 function fetchDraftArticles() {
   return db
     .collection("Blogs")
-    .where("isPublished", "==", false)
+    // .where("isPublished", "==", false)
     .get()
     .then((querySnapshot) => {
       const articles = [];
