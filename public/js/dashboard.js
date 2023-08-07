@@ -57,13 +57,14 @@ document
 function fetchPublishedArticles() {
   return db
     .collection("Blogs")
-    .where("isPublished", "==", true)
+    .where("isPublished", "==", false)
     .get()
     .then((querySnapshot) => {
       const articles = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        console.log("Article data:", data);
+        // console.log("Article data:", data);
+        console.log(data.isPublished === true)
         if(data.isPublished === true){
           articles.push({
           id: doc.id,
